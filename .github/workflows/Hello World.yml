@@ -34,7 +34,7 @@ jobs:
       - run: flutter pub get
       - run: flutter build web --web-renderer html
       - run: flutter build web --base-href /${{ steps.version.outputs.repository }}/
-
+      - run: ls -R
       #- name: Deploy
       #  uses: peaceiris/actions-gh-pages@v3
       #  with:
