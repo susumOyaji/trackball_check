@@ -47,7 +47,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: outputs
-          path: app/build/outputs/
+          path: build/web/
       #これにより以下のように成果物をダウンロードすることができます。        
       #apkファイルの成果物は outputs/apk/release/app-release.apk, aabファイルの成果物は outputs/bundle/release/app-release.aab にあります。
       
