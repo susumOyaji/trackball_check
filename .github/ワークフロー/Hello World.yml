@@ -56,6 +56,11 @@ jobs:
       #artifactの設定 ~ビルドした成果物をダウンロードできるようにする~
       #Buildした成果物をダウンロードできるようにするためには upload-artifact というライブラリを使用して成果物をアップロードしています。
       #以下のように設定することで成果物をアップロードすることができます。
+      - uses: actions/upload-artifact@v3
+      with:
+        name: outputs
+        path: app/build/outputs/
+      
       - uses: actions/upload-artifact@master
       with:
         name: build
