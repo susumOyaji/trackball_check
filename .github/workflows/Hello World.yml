@@ -41,6 +41,19 @@ jobs:
       #    github_token: ${{ secrets.GITHUB_TOKEN }}
       #    publish_dir: ./docs
           #publish_branch: master
+
+      #ビルドした成果物をダウンロードできるようにする
+      #Debug Build, Release Build共にビルドを実行完了した後のapkファイル, aabファイルなどの各種成果物をダウンロードできるようにには以下の項目を追加します
+      - uses: actions/upload-artifact@v3
+        with:
+          name: outputs
+          path: app/build/outputs/
+      #これにより以下のように成果物をダウンロードすることができます。        
+      #apkファイルの成果物は outputs/apk/release/app-release.apk, aabファイルの成果物は outputs/bundle/release/app-release.aab にあります。
+      
+      
+      
+      
       #ディレクトリ全体をアップロードする
       - uses: actions/upload-artifact@v3
         with:
