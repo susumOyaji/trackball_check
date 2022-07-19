@@ -46,7 +46,7 @@ jobs:
 
       - uses: actions/download-artifact@v3
         with:
-          name: my-artifact
+          name: oyaji
           path: build/web # or path/to/artifact 
           
       - name: Display structure of downloaded files
@@ -57,7 +57,7 @@ jobs:
       #ディレクトリ全体をアップロードする
       - uses: actions/upload-artifact@v3
         with:
-          name: my-artifact
+          name: oyaji
           path: build/web # or path/to/artifact     
   say_hello:
     runs-on: ubuntu-latest
