@@ -45,7 +45,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: docs # or path/to/artifact     
+          path: build/web # or path/to/artifact     
   say_hello:
     runs-on: ubuntu-latest
     steps:
