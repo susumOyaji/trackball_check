@@ -49,9 +49,9 @@ jobs:
           name: oyaji
           path: build/web # or path/to/artifact 
           
-      - name: Display structure of downloaded files
-        run: ls -R
-        working-directory: path/to/artifact
+      #- name: Display structure of downloaded files
+      #  run: ls -R
+      #  working-directory: path/to/artifact
         
       #artifactの設定 ~ビルドした成果物をダウンロードできるようにする~
       #Buildした成果物をダウンロードできるようにするためには upload-artifact というライブラリを使用して成果物をアップロードしています。
