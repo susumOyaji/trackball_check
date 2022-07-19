@@ -1,0 +1,52 @@
+name: Hello World
+
+
+on:  # onで実行タイミングを設定
+  push:
+    branches:
+      - master
+
+  #workflow_dispatch: # 手動で実行するAction
+
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest #18.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Repository
+        id: version
+        run: |
+          REPOSITORY=$(echo ${{ github.repository }} | sed -e "s#.*/##")
+          echo ::set-output name=repository::$REPOSITORY
+      - name: Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.5'
+          channel: 'stable'
+          cache: true
+      - run: flutter --version
+      - run: flutter pub get
+      - run: flutter build web --web-renderer html
+      - run: flutter build web --base-href /${{ steps.version.outputs.repository }}/
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          #publish_branch: master
+      #ディレクトリ全体をアップロードする
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: ./docs # or path/to/artifact     
+  say_hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello World! to Flutter to Flutter"
