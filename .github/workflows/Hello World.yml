@@ -38,11 +38,11 @@ jobs:
 
       #ビルドした成果物をダウンロードできるようにする
       #Debug Build, Release Build共にビルドを実行完了した後のapkファイル, aabファイルなどの各種成果物をダウンロードできるようにには以下の項目を追加します
-      - name: up 
+      - name: build/web to outputs 
         uses: actions/upload-artifact@v3
         with:
-          name: build/web to outputs
-          path: build/web
+          name: outputs
+          path: build/web/
       #これにより以下のように成果物をダウンロードすることができます。        
       #apkファイルの成果物は outputs/apk/release/app-release.apk, aabファイルの成果物は outputs/bundle/release/app-release.aab にあります。
 
