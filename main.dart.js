@@ -45840,7 +45840,7 @@ A.D6.prototype={
 n(a){this.e.n(0)
 this.bg(0)},
 N(a,b){var s=this,r=null,q=s.d
-return A.wR(!0,r,new A.qL(new A.qX(q,new A.ks(q,t.jY)),A.a2R(A.a([A.Js(B.G8,new A.Vp(s),A.wt(r,r,r,r,r,r,r,r,r,r,r,B.cT,r,r,r,r,r,r)),A.Js(B.G9,new A.Vq(s),A.wt(r,r,r,r,r,r,r,r,r,r,r,B.cT,r,r,r,r,r,r)),A.Js(B.Ga,new A.Vr(s),A.wt(r,r,r,r,r,r,r,r,r,r,r,B.cT,r,r,r,r,r,r)),A.Js(B.Gb,new A.Vs(s),A.wt(r,r,r,r,r,r,r,r,r,r,r,B.cT,r,r,r,r,r,r))],t.E),B.jV,B.zS,B.ed),r),r,r,r,r,!0,r,r,r,new A.Vt(s),r)}}
+return A.wR(!0,r,new A.qL(new A.qX(q,new A.ks(q,t.jY)),A.a2R(A.a([A.Js(B.G9,new A.Vp(s),A.wt(r,r,r,r,r,r,r,r,r,r,r,B.cT,r,r,r,r,r,r)),A.Js(B.Ga,new A.Vq(s),A.wt(r,r,r,r,r,r,r,r,r,r,r,B.cT,r,r,r,r,r,r)),A.Js(B.Gb,new A.Vr(s),A.wt(r,r,r,r,r,r,r,r,r,r,r,B.cT,r,r,r,r,r,r)),A.Js(B.G8,new A.Vs(s),A.wt(r,r,r,r,r,r,r,r,r,r,r,B.cT,r,r,r,r,r,r))],t.E),B.jV,B.zS,B.ed),r),r,r,r,r,!0,r,r,r,new A.Vt(s),r)}}
 A.Vt.prototype={
 $2(a,b){var s,r,q="KeyDown : null"
 if(b instanceof A.iq){s=this.a
@@ -49466,10 +49466,10 @@ B.DK=new A.l(!0,B.j,null,".SF UI Text",null,null,null,null,null,null,null,null,n
 B.G6=new A.cN(B.Da,B.EQ,B.F2,B.FH,B.Ep,B.Dx,B.EX,B.Es,B.EA,B.Fp,B.DH,B.FM,B.Ek,B.Fg,B.DK)
 B.G7=new A.Aq(1,"longestLine")
 B.d5=new A.l(!0,B.m,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.G8=new A.iR("F1  Trace",null,B.d5,null)
-B.G9=new A.iR("F2  Clear",null,B.d5,null)
-B.Ga=new A.iR("F3  Phase/Pluse",null,B.d5,null)
-B.Gb=new A.iR("F4  Quit(End)",null,B.d5,null)
+B.G8=new A.iR("F4  Quit(Close)",null,B.d5,null)
+B.G9=new A.iR("F1  Trace",null,B.d5,null)
+B.Ga=new A.iR("F2  Clear",null,B.d5,null)
+B.Gb=new A.iR("F3  Phase/Pluse",null,B.d5,null)
 B.Ix=new A.Sz(0,"system")
 B.Gc=new A.rp(null)
 B.d6=new A.At(0,"clamp")
