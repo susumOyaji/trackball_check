@@ -35,6 +35,12 @@ jobs:
       - run: flutter build web --web-renderer html
       - run: flutter build web --base-href /${{ steps.version.outputs.repository }}/
       - run: ls -R
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/web/
+          publish_branch: gh-pages
 
       #ビルドした成果物をダウンロードできるようにする
       #Debug Build, Release Build共にビルドを実行完了した後のapkファイル, aabファイルなどの各種成果物をダウンロードできるようにには以下の項目を追加します
@@ -46,17 +52,6 @@ jobs:
       #これにより以下のように成果物をダウンロードすることができます。        
       #apkファイルの成果物は outputs/apk/release/app-release.apk, aabファイルの成果物は outputs/bundle/release/app-release.aab にあります。
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/web/
-          publish_branch: gh-pages
-
-      
-      
-      
-      
       
       #ディレクトリ全体をアップロードする
       #- uses: actions/upload-artifact@v3
