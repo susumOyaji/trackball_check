@@ -1,4 +1,4 @@
-name: Hello World
+name: Deploy to Flutter
 
 
 on:  # onで実行タイミングを設定
