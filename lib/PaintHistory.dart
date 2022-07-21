@@ -77,6 +77,14 @@ class SignHistory {
     }
   }
 
+  void upmovePaint(Offset nextPoint) {
+    if (_inDrag) {
+      _PaintData data = _paintList.last.key;
+      Path path = data.path;
+      path.moveTo(nextPoint.dx, nextPoint.dy);
+    }
+  }
+
   void endPaint() {
     _inDrag = false;
   }

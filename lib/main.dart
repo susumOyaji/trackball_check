@@ -31,9 +31,10 @@ class MyStatefulWidget extends StatefulWidget {
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   final SignController _controller = SignController();
+
 // The node used to request the keyboard focus.
   final FocusNode _focusNode = FocusNode();
-
+  bool _trace = true;
 // The message to display.
 //  String? _message;
 
@@ -50,6 +51,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     //F2 = 4294969346;
     // キーダウン
     if (event.logicalKey == LogicalKeyboardKey.keyQ) {}
+    if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(49)) {
+      print('KeyDown : ${event.logicalKey.debugName}');
+      setState(() {
+        _trace = !_trace;
+      });
+      print(_trace);
+    }
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(50)) {
       //Digit 2
       print('KeyDown : ${event.logicalKey.debugName}');
@@ -97,13 +105,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           children: <Widget>[
             ElevatedButton(
               //heroTag: "Trace",
-              onPressed: () => _controller.clear(),
+              onPressed: () => _controller.nontrace(),
               child: const Text('F1  Trace',
                   style: TextStyle(
                     color: Colors.black,
                   )),
               style: ElevatedButton.styleFrom(
-                primary: Colors.grey,
+                primary: _trace ? Colors.orange : Colors.grey,
               ),
             ),
             ElevatedButton(

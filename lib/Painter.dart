@@ -16,6 +16,7 @@ class Signer extends StatefulWidget {
 class _SignerState extends State<Signer> {
   double x = 0.0;
   double y = 0.0;
+  bool _nontrace = false;
 
   void _updateLocation(PointerEvent details) {
     //Text(
@@ -56,7 +57,8 @@ class _SignerState extends State<Signer> {
         ),
         onHover: (event) {
           _onPaintHover(event);
-          _onPaintUpdateM(event);
+          _onPaintUpdate(event);
+          _onPaintMovedate(event);
           // _onPaintExd(event);
           _updateLocation(event);
         },
@@ -74,9 +76,15 @@ class _SignerState extends State<Signer> {
     widget.paintController._notifyListeners();
   }
 
-  void _onPaintUpdateM(PointerEvent details) {
+  void _onPaintUpdate(PointerEvent details) {
     widget.paintController._paintHistory
         .updatePaint(_getGlobalToLocalPosition(details.localPosition));
+    widget.paintController._notifyListeners();
+  }
+
+  void _onPaintMovedate(PointerEvent details) {
+    widget.paintController._paintHistory
+        .upmovePaint(_getGlobalToLocalPosition(details.localPosition));
     widget.paintController._notifyListeners();
   }
 
@@ -120,6 +128,15 @@ class SignController extends ChangeNotifier {
   }
 
   void _notifyListeners() {
+    notifyListeners();
+  }
+
+  void nontrace() {
+    _paintHistory.endPaint();
+    //_paintHistory.clear();
+    //  _nontrace = !_nontrace;
+
+    //2_paintHistory.addPaint(Offset(280, 639));
     notifyListeners();
   }
 
