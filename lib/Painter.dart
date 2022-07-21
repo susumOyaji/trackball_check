@@ -16,7 +16,7 @@ class Signer extends StatefulWidget {
 class _SignerState extends State<Signer> {
   double x = 0.0;
   double y = 0.0;
-  bool _nontrace = false;
+  bool _trace = true;
 
   void _updateLocation(PointerEvent details) {
     //Text(
@@ -57,8 +57,11 @@ class _SignerState extends State<Signer> {
         ),
         onHover: (event) {
           _onPaintHover(event);
-          _onPaintUpdate(event);
-          _onPaintMovedate(event);
+          if (_trace) {
+            _onPaintUpdate(event);
+          } else {
+            _onPaintMovedate(event);
+          }
           // _onPaintExd(event);
           _updateLocation(event);
         },
@@ -133,6 +136,7 @@ class SignController extends ChangeNotifier {
 
   void nontrace() {
     _paintHistory.endPaint();
+
     //_paintHistory.clear();
     //  _nontrace = !_nontrace;
 

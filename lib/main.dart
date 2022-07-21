@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:trackball_check/PaintHistory.dart';
 import 'Painter.dart';
 
 void main() => runApp(const MyApp());
@@ -111,7 +112,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     color: Colors.black,
                   )),
               style: ElevatedButton.styleFrom(
-                primary: _trace ? Colors.orange : Colors.grey,
+                primary: _trace ? Colors.orangeAccent : Colors.grey,
               ),
             ),
             ElevatedButton(
