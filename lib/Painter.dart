@@ -57,11 +57,11 @@ class _SignerState extends State<Signer> {
         ),
         onHover: (event) {
           _onPaintHover(event);
-          if (_trace) {
-            _onPaintUpdate(event);
-          } else {
-            _onPaintMovedate(event);
-          }
+          // if (_trace) {
+          _onPaintUpdate(event);
+          //} else {
+          //  _onPaintMovedate(event);
+          //}
           // _onPaintExd(event);
           _updateLocation(event);
         },
@@ -136,12 +136,12 @@ class SignController extends ChangeNotifier {
 
   void nontrace() {
     _paintHistory.endPaint();
-
+    //_paintHistory.startPaint();
     //_paintHistory.clear();
     //  _nontrace = !_nontrace;
 
     //2_paintHistory.addPaint(Offset(280, 639));
-    notifyListeners();
+    //notifyListeners();
   }
 
   void clear() {

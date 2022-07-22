@@ -61,6 +61,7 @@ class SignHistory {
 
   void addPaint(Offset startPoint) {
     if (!_inDrag) {
+      //faluse
       _inDrag = true;
       Path path = Path();
       path.moveTo(startPoint.dx, startPoint.dy);
@@ -71,6 +72,8 @@ class SignHistory {
 
   void updatePaint(Offset nextPoint) {
     if (_inDrag) {
+      //true
+      print(_inDrag);
       _PaintData data = _paintList.last.key;
       Path path = data.path;
       path.lineTo(nextPoint.dx, nextPoint.dy);
@@ -87,6 +90,10 @@ class SignHistory {
 
   void endPaint() {
     _inDrag = false;
+  }
+
+  void startPaint() {
+    _inDrag = true;
   }
 
   void draw(Canvas canvas, Size size) {
