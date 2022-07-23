@@ -43,7 +43,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   void dispose() {
     _focusNode.dispose();
+    //_traceControl();
     super.dispose();
+  }
+
+  void _traceControl() {
+    if (_trace) {
+      _controller.nontrace();
+    } else {
+      _controller.ontrace();
+    }
+    setState(() {
+      _trace = !_trace;
+    });
   }
 
 // Handles the key events from the RawKeyboardListener and update the
@@ -54,14 +66,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     if (event.logicalKey == LogicalKeyboardKey.keyQ) {}
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(49)) {
       print('KeyDown : ${event.logicalKey.debugName}');
-      if (_trace) {
-        _controller.nontrace();
-      } else {
-        _controller.ontrace();
-      }
-      setState(() {
-        _trace = !_trace;
-      });
+      _traceControl();
     }
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(50)) {
       //Digit 2

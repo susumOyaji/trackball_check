@@ -141,7 +141,7 @@ class SignController extends ChangeNotifier {
     //  _nontrace = !_nontrace;
 
     //2_paintHistory.addPaint(Offset(280, 639));
-    //notifyListeners();
+    notifyListeners();
   }
 
   void ontrace() {
@@ -151,7 +151,7 @@ class SignController extends ChangeNotifier {
     //  _nontrace = !_nontrace;
 
     //2_paintHistory.addPaint(Offset(280, 639));
-    //notifyListeners();
+    notifyListeners();
   }
 
   void clear() {
