@@ -62,7 +62,7 @@ class SignHistory {
   void addPaint(Offset startPoint) {
     if (!_inDrag) {
       //faluse
-      _inDrag = true;
+      //_inDrag = true;
       Path path = Path();
       path.moveTo(startPoint.dx, startPoint.dy);
       _PaintData data = _PaintData(path: path);
@@ -70,10 +70,18 @@ class SignHistory {
     }
   }
 
+  void MyaddPaint(Offset startPoint) {
+    Path path = Path();
+    path.moveTo(startPoint.dx, startPoint.dy);
+    _PaintData data = _PaintData(path: path);
+    _paintList.add(MapEntry<_PaintData, Paint>(data, currentPaint));
+  }
+
   void updatePaint(Offset nextPoint) {
+    //MyaddPaint(nextPoint);
+    print("updatePaint:  $_inDrag");
     if (_inDrag) {
       //true
-      print(_inDrag);
       _PaintData data = _paintList.last.key;
       Path path = data.path;
       path.lineTo(nextPoint.dx, nextPoint.dy);

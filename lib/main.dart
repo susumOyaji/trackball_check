@@ -54,11 +54,14 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     if (event.logicalKey == LogicalKeyboardKey.keyQ) {}
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(49)) {
       print('KeyDown : ${event.logicalKey.debugName}');
-      _controller.nontrace();
+      if (_trace) {
+        _controller.nontrace();
+      } else {
+        _controller.ontrace();
+      }
       setState(() {
         _trace = !_trace;
       });
-      print(_trace);
     }
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(50)) {
       //Digit 2
