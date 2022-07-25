@@ -39,16 +39,22 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 // The message to display.
 //  String? _message;
 
+  @override
+  void initState() {
+    super.initState();
+    print("initState");
+    _traceControl();
+  }
+
 // Focus nodes need to be disposed.
   @override
   void dispose() {
     _focusNode.dispose();
-    //_traceControl();
     super.dispose();
   }
 
   void _traceControl() {
-    if (_trace) {
+    if (!_trace) {
       _controller.nontrace();
     } else {
       _controller.ontrace();
