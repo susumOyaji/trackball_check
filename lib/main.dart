@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:trackball_check/PaintHistory.dart';
 import 'Painter.dart';
+import 'InheritedWidget.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const MyInh());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
