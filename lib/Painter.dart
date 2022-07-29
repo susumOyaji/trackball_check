@@ -37,7 +37,7 @@ class _SignerState extends State<Signer> {
       //final FocusNode focusNode = Focus.of(context);
       //final bool hasFocus = focusNode.hasFocus;
       child: MouseRegion(
-        cursor: SystemMouseCursors.text, //hand click cursor
+        cursor: SystemMouseCursors.click, //hand click cursor
         child: CustomPaint(
           willChange: true,
           painter: _CustomPainter(
