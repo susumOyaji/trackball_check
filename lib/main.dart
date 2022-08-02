@@ -70,8 +70,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   void _handleKeyEvent(KeyEvent event) {
     //F2 = 4294969346;
     // キーダウン
-    if (event.logicalKey == LogicalKeyboardKey.keyQ) {}
+    //if (event.logicalKey == LogicalKeyboardKey.keyQ) {}
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(49)) {
+      //Digit 1
       print('KeyDown : ${event.logicalKey.debugName}');
       _traceControl();
     }
@@ -80,11 +81,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       print('KeyDown : ${event.logicalKey.debugName}');
       _controller.clear();
     }
-    if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(4294969346)) {
-      //Digit 2
+    if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(51)) {
+      //Digit 3
       print('KeyDown : ${event.logicalKey.debugName}');
       _controller.clear();
     }
+    //if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(4294969346)) {
+    //F1key
+    //  print('KeyDown : ${event.logicalKey.debugName}');
+    //  _controller.clear();
+    //}
 
     // キーアップ
     if (event is KeyUpEvent) {
@@ -123,7 +129,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ElevatedButton(
               //heroTag: "Trace",
               onPressed: () => _controller.nontrace(),
-              child: const Text('F1  Trace',
+              child: const Text('1  Trace',
                   style: TextStyle(
                     color: Colors.black,
                   )),
@@ -134,7 +140,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ElevatedButton(
               //heroTag: "clear",
               onPressed: () => _controller.clear(),
-              child: const Text('F2  Clear',
+              child: const Text('2  Clear',
                   style: TextStyle(
                     color: Colors.black,
                   )),
@@ -145,7 +151,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ElevatedButton(
               //heroTag: "Phase/Pluse",
               onPressed: () => _controller.clear(),
-              child: const Text('F3  Phase/Pluse',
+              child: const Text('3  Phase/Pluse',
                   style: TextStyle(
                     color: Colors.black,
                   )),
@@ -156,7 +162,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ElevatedButton(
               //heroTag: "Phase/Pluse",
               onPressed: () => _controller.clear(),
-              child: const Text('F4  Quit(Close)',
+              child: const Text('4  Quit(Close)',
                   style: TextStyle(
                     color: Colors.black,
                   )),

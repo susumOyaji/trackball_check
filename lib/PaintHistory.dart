@@ -62,7 +62,7 @@ class SignHistory {
   void addPaint(Offset startPoint) {
     if (!_inDrag) {
       //faluse
-      //_inDrag = true;
+      _inDrag = true;
       Path path = Path();
       path.moveTo(startPoint.dx, startPoint.dy);
       _PaintData data = _PaintData(path: path);
