@@ -18,6 +18,9 @@ class _SignerState extends State<Signer> {
   double y = 0.0;
   bool _trace = true;
 
+  double relativeDx = 0;
+  double relativeDy = 0;
+
   void _updateLocation(PointerEvent details) {
     //Text(
     //    style: TextStyle(color: Colors.white),
@@ -26,6 +29,20 @@ class _SignerState extends State<Signer> {
       x = details.position.dx;
       y = details.position.dy;
     });
+  }
+
+  void _manageOnHover(PointerEvent e) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    final referenceWidth = (screenWidth) / 2;
+    final newRelativeDx = (e.position.dx - referenceWidth); // / referenceWidth;
+    final referenceHeight = (screenHeight) / 2;
+    final newRelativeDy =
+        (referenceHeight - e.position.dy); // / referenceHeight;
+
+    setState(() => x = newRelativeDx);
+
+    setState(() => y = newRelativeDy);
   }
 
   @override
@@ -55,15 +72,20 @@ class _SignerState extends State<Signer> {
                 ]),
           ),
         ),
-        onHover: (event) {
+        onEnter: (event) {
           _onPaintHover(event);
+        },
+        onHover: (event) {
+          _manageOnHover(event);
+
           //if (_trace) {
           _onPaintUpdate(event);
+          _onPaintHover(event);
           //} else {
           //_onPaintMovedate(event);
           //}
           // _onPaintExd(event);
-          _updateLocation(event);
+          //_updateLocation(event);
         },
       ),
       // },
@@ -135,7 +157,7 @@ class SignController extends ChangeNotifier {
   }
 
   void nontrace() {
-    _paintHistory.endPaint();
+    //_paintHistory.endPaint();
     //_paintHistory.startPaint();
     //_paintHistory.clear();
     //  _nontrace = !_nontrace;
@@ -146,7 +168,7 @@ class SignController extends ChangeNotifier {
 
   void ontrace() {
     //_paintHistory.endPaint();
-    _paintHistory.startPaint();
+    //_paintHistory.startPaint();
     //_paintHistory.clear();
     //  _nontrace = !_nontrace;
 

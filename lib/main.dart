@@ -36,7 +36,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
 // The node used to request the keyboard focus.
   final FocusNode _focusNode = FocusNode();
-  bool _trace = true;
+  bool _trace = false;
+  bool _phase = true;
 // The message to display.
 //  String? _message;
 
@@ -55,11 +56,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 
   void _traceControl() {
-    if (!_trace) {
-      _controller.nontrace();
-    } else {
-      _controller.ontrace();
-    }
+    //if (_trace) {
+    //  _controller.nontrace();
+    //} else {
+    //  _controller.ontrace();
+    //}
     setState(() {
       _trace = !_trace;
     });
@@ -74,7 +75,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(49)) {
       //Digit 1
       print('KeyDown : ${event.logicalKey.debugName}');
-      _traceControl();
+      //11_traceControl();
+      setState(() {
+        _trace = !_trace;
+      });
     }
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(50)) {
       //Digit 2
@@ -156,7 +160,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     color: Colors.black,
                   )),
               style: ElevatedButton.styleFrom(
-                primary: Colors.grey,
+                primary: _phase ? Colors.orangeAccent : Colors.grey,
               ),
             ),
             ElevatedButton(

@@ -60,6 +60,7 @@ class SignHistory {
   }
 
   void addPaint(Offset startPoint) {
+    print("addPaint:  $_inDrag");
     if (!_inDrag) {
       //faluse
       _inDrag = true;
