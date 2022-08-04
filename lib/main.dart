@@ -1,3 +1,6 @@
+import 'dart:html';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:trackball_check/PaintHistory.dart';
@@ -97,6 +100,21 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         _phase = !_phase;
       });
     }
+
+    if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(52)) {
+      //Digit 4
+      print('KeyDown : ${event.logicalKey.debugName}');
+
+      String myurl = Uri.base.toString(); //get complete url
+
+      var newLocation = window.location..href = myurl;
+
+      window.location = newLocation;
+      // Does not close this window, as the history has changed.
+      window.close();
+      //print(window.location);
+      print(window.closed); // 'false'
+    }
     //if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(4294969346)) {
     //F1key
     //  print('KeyDown : ${event.logicalKey.debugName}');
@@ -172,7 +190,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ),
             ElevatedButton(
               //heroTag: "Phase/Pluse",
-              onPressed: () => _controller.clear(),
+              onPressed: () => window.close(),
               child: const Text('4  Quit(Close)',
                   style: TextStyle(
                     color: Colors.black,
