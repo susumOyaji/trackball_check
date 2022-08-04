@@ -20,6 +20,7 @@ class SignHistory {
   final Paint _backgroundPaint = Paint();
 
   bool _inDrag = false;
+  bool _trace = true;
 
   late Paint currentPaint;
 
@@ -73,19 +74,26 @@ class SignHistory {
 
   void updatePaint(Offset nextPoint) {
     print("updatePaint:  $_inDrag");
-    if (_inDrag) {
+    if (_inDrag & _trace) {
       //true
       _PaintData data = _paintList.last.key;
       Path path = data.path;
       path.lineTo(nextPoint.dx, nextPoint.dy);
+    } else {
+      //nontrace to move of cersoure
+      Path path = Path();
+      path.moveTo(nextPoint.dx, nextPoint.dy);
+      _PaintData data = _PaintData(path: path);
+      _paintList.add(MapEntry<_PaintData, Paint>(data, currentPaint));
     }
   }
 
   void upmovePaint(Offset nextPoint) {
-    if (_inDrag) {
-      _PaintData data = _paintList.last.key;
-      Path path = data.path;
+    if (_inDrag & !_trace) {
+      Path path = Path();
       path.moveTo(nextPoint.dx, nextPoint.dy);
+      _PaintData data = _PaintData(path: path);
+      _paintList.add(MapEntry<_PaintData, Paint>(data, currentPaint));
     }
   }
 
@@ -95,6 +103,11 @@ class SignHistory {
 
   void startPaint() {
     _inDrag = true;
+    _trace = true;
+  }
+
+  void endTrace() {
+    _trace = false;
   }
 
   void draw(Canvas canvas, Size size) {

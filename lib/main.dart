@@ -76,6 +76,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       //Digit 1
       print('KeyDown : ${event.logicalKey.debugName}');
       //11_traceControl();
+      if (_trace) {
+        _controller.nontrace();
+      } else {
+        _controller.ontrace();
+      }
       setState(() {
         _trace = !_trace;
       });
@@ -88,7 +93,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(51)) {
       //Digit 3
       print('KeyDown : ${event.logicalKey.debugName}');
-      _controller.clear();
+      setState(() {
+        _phase = !_phase;
+      });
     }
     //if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(4294969346)) {
     //F1key
@@ -155,7 +162,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ElevatedButton(
               //heroTag: "Phase/Pluse",
               onPressed: () => _controller.clear(),
-              child: const Text('3  Phase/Pluse',
+              child: Text('3 ${_phase ? 'Phase' : 'Pluse'}',
                   style: TextStyle(
                     color: Colors.black,
                   )),

@@ -16,7 +16,7 @@ class Signer extends StatefulWidget {
 class _SignerState extends State<Signer> {
   double x = 0.0;
   double y = 0.0;
-  bool _trace = true;
+  //bool _trace = true;
 
   double relativeDx = 0;
   double relativeDy = 0;
@@ -77,21 +77,10 @@ class _SignerState extends State<Signer> {
         },
         onHover: (event) {
           _manageOnHover(event);
-
-          //if (_trace) {
-          _onPaintUpdate(event);
           _onPaintHover(event);
-          //} else {
-          //_onPaintMovedate(event);
-          //}
-          // _onPaintExd(event);
-          //_updateLocation(event);
+          _onPaintUpdate(event);
         },
       ),
-      // },
-      //),
-      //width: double.infinity,
-      //height: double.infinity,
     );
   }
 
@@ -104,12 +93,6 @@ class _SignerState extends State<Signer> {
   void _onPaintUpdate(PointerEvent details) {
     widget.paintController._paintHistory
         .updatePaint(_getGlobalToLocalPosition(details.localPosition));
-    widget.paintController._notifyListeners();
-  }
-
-  void _onPaintMovedate(PointerEvent details) {
-    widget.paintController._paintHistory
-        .upmovePaint(_getGlobalToLocalPosition(details.localPosition));
     widget.paintController._notifyListeners();
   }
 
@@ -157,22 +140,14 @@ class SignController extends ChangeNotifier {
   }
 
   void nontrace() {
-    //_paintHistory.endPaint();
-    //_paintHistory.startPaint();
-    //_paintHistory.clear();
-    //  _nontrace = !_nontrace;
-
-    //2_paintHistory.addPaint(Offset(280, 639));
+    //_paintHistory.upmovePaint();
+    _paintHistory.endTrace();
     notifyListeners();
   }
 
   void ontrace() {
-    //_paintHistory.endPaint();
-    //_paintHistory.startPaint();
+    _paintHistory.startPaint();
     //_paintHistory.clear();
-    //  _nontrace = !_nontrace;
-
-    //2_paintHistory.addPaint(Offset(280, 639));
     notifyListeners();
   }
 
