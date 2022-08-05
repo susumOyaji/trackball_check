@@ -1,4 +1,4 @@
-import 'dart:html';
+import 'dart:html' as html;
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:trackball_check/PaintHistory.dart';
 import 'Painter.dart';
 import 'InheritedWidget.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(const MyApp());
 
@@ -69,6 +70,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     });
   }
 
+  void toast() {
+    Fluttertoast.showToast(
+      msg: "Unsupported!",
+      fontSize: 16.0,
+      textColor: Colors.white,
+      backgroundColor: Colors.black54,
+      timeInSecForIosWeb: 2,
+    );
+  }
+
 // Handles the key events from the RawKeyboardListener and update the
 // _message.
   void _handleKeyEvent(KeyEvent event) {
@@ -104,16 +115,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(52)) {
       //Digit 4
       print('KeyDown : ${event.logicalKey.debugName}');
+      toast();
+      //String myurl = Uri.base.toString(); //get complete url
 
-      String myurl = Uri.base.toString(); //get complete url
+      //var newLocation = window.location..href = myurl;
 
-      var newLocation = window.location..href = myurl;
-
-      window.location = newLocation;
+      //window.location = newLocation;
       // Does not close this window, as the history has changed.
-      window.close();
+      //window.close();
       //print(window.location);
-      print(window.closed); // 'false'
+      //print(window.closed); // 'false'
     }
     //if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(4294969346)) {
     //F1key
@@ -155,7 +166,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            ElevatedButton(
+            OutlinedButton(
               //heroTag: "Trace",
               onPressed: () => _controller.nontrace(),
               child: const Text('1  Trace',
@@ -166,7 +177,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 primary: _trace ? Colors.orangeAccent : Colors.grey,
               ),
             ),
-            ElevatedButton(
+            TextButton(
               //heroTag: "clear",
               onPressed: () => _controller.clear(),
               child: const Text('2  Clear',
@@ -177,7 +188,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 primary: Colors.grey,
               ),
             ),
-            ElevatedButton(
+            TextButton(
               //heroTag: "Phase/Pluse",
               onPressed: () => _controller.clear(),
               child: Text('3 ${_phase ? 'Phase' : 'Pluse'}',
@@ -190,7 +201,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ),
             ElevatedButton(
               //heroTag: "Phase/Pluse",
-              onPressed: () => window.close(),
+              onPressed: () => toast(),
               child: const Text('4  Quit(Close)',
                   style: TextStyle(
                     color: Colors.black,
