@@ -7,13 +7,16 @@ import 'package:trackball_check/PaintHistory.dart';
 import 'Painter.dart';
 import 'InheritedWidget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'ShortCut.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'CopyableTextField.dart';
 
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = 'Track Boll Check(Web) Ver0.0.0 ';
+  static const String _title = 'Track Ball Check(Web) Ver0.0.0 ';
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +44,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 // The node used to request the keyboard focus.
   final FocusNode _focusNode = FocusNode();
   bool _trace = false;
+  bool _clear = true;
   bool _phase = true;
 // The message to display.
 //  String? _message;
@@ -115,14 +119,23 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(52)) {
       //Digit 4
       print('KeyDown : ${event.logicalKey.debugName}');
-      toast();
-      //String myurl = Uri.base.toString(); //get complete url
+      //toast();
+      String myurl = Uri.base.toString(); //get complete url
 
       //var newLocation = window.location..href = myurl;
+      //html.window.onUnload.listen((event) async {
+      // do something
+      //});
+      //html.window.onBeforeUnload.listen((event) {
+      // change something in db
+      //});
 
+      //window.open('','_self').close();
+      //closeInAppWebView();
       //window.location = newLocation;
       // Does not close this window, as the history has changed.
       //window.close();
+      //window.open('','_self').close();
       //print(window.location);
       //print(window.closed); // 'false'
     }
@@ -185,7 +198,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     color: Colors.black,
                   )),
               style: ElevatedButton.styleFrom(
-                primary: Colors.grey,
+                primary: _clear ? Colors.orangeAccent : Colors.grey,
               ),
             ),
             TextButton(
