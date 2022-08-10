@@ -7,9 +7,12 @@ import 'package:trackball_check/PaintHistory.dart';
 import 'Painter.dart';
 import 'InheritedWidget.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'ShortCut.dart';
+import 'Nav2App.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'CopyableTextField.dart';
+import 'ShortCur.dart';
+import 'Invork.dart';
+//import 'Mycount.dart';
 
 void main() => runApp(const MyApp());
 
@@ -121,16 +124,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       print('KeyDown : ${event.logicalKey.debugName}');
       //toast();
       String myurl = Uri.base.toString(); //get complete url
+      // Write to the console.
+      //window.console.log('Jinkies!');
+      //window.console.error('Jeepers!');
+      //print(window.closed); // 'false'
+      //window.close();
+      //print(window.closed); // 'true'
 
+      //window.open('about:blank', '_self').close();
       //var newLocation = window.location..href = myurl;
-      //html.window.onUnload.listen((event) async {
-      // do something
-      //});
-      //html.window.onBeforeUnload.listen((event) {
-      // change something in db
-      //});
-
-      //window.open('','_self').close();
+      //window.open('', '_self').close();
       //closeInAppWebView();
       //window.location = newLocation;
       // Does not close this window, as the history has changed.
