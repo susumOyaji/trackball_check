@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+//import 'package:js/js.dart';
+import 'dart:js' as js;
 
 // lodash用に定義した処理を読み込む
 import 'lodash.dart';
@@ -10,8 +12,9 @@ void main() {
 class MyScript extends StatelessWidget {
   const MyScript({Key? key}) : super(key: key);
 
-  void _showConfirmButton() {
-    confirm("Hello, this is a confirm");
+  void _incrementCounter() {
+    var state = js.JsObject.fromBrowserObject(js.context['state']);
+    print(state['hello']);
   }
 
   @override
@@ -28,24 +31,18 @@ class MyScript extends StatelessWidget {
             Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                // _.max() を呼び出す
-                max([10, 20, 30]).toString(),
-                style: TextStyle(fontSize: 24),
-              ),
-              Text(
-                // _.camelCase() を呼び出す
-                camelCase('Foo Bar'),
-                style: TextStyle(fontSize: 24),
-              ),
-              Text(
-                //heroTag: "clear",
-                confirm('Foo Bar2'),
-                style: TextStyle(fontSize: 24),
-              ),
-            ],
+            children: <Widget>[],
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            _incrementCounter();
+            js.context
+                .callMethod('jsTestFunction', ['DartからJavascriptを呼び出しました！']);
+            js.context.callMethod('logger', ['_someFlutterState']);
+          },
+          tooltip: 'Increment',
+          child: const Icon(Icons.add),
         ),
       ),
     );

@@ -3,19 +3,20 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:trackball_check/PaintHistory.dart';
+//import 'PaintHistory.dart';
 import 'Painter.dart';
-import 'InheritedWidget.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'Nav2App.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'CopyableTextField.dart';
-import 'ShortCur.dart';
-import 'Invork.dart';
-import 'JScript.dart';
-import 'urlmain.dart';
+//import 'InheritedWidget.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
+//import 'Nav2App.dart';
+//import 'package:url_launcher/url_launcher.dart';
+//import 'CopyableTextField.dart';
+//import 'ShortCur.dart';
+//import 'Invork.dart';
+//import 'JScript.dart';
+import 'dart:js' as js;
+//import 'urlmain.dart';
 
-void main() => runApp(const MyApp);
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -56,7 +57,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   void initState() {
     super.initState();
-    print("initState");
     _traceControl();
   }
 
@@ -68,24 +68,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 
   void _traceControl() {
-    //if (_trace) {
-    //  _controller.nontrace();
-    //} else {
-    //  _controller.ontrace();
-    //}
     setState(() {
       _trace = !_trace;
     });
   }
 
-  void toast() {
-    Fluttertoast.showToast(
-      msg: "Unsupported!",
-      fontSize: 16.0,
-      textColor: Colors.white,
-      backgroundColor: Colors.black54,
-      timeInSecForIosWeb: 2,
-    );
+  void _incrementCounter() {
+    var state = js.JsObject.fromBrowserObject(js.context['state']);
+    print(state['hello']);
+  }
+
+  void CloseTop() {
+    js.context.callMethod('jsTestFunction', ['DartからJavascriptを呼び出しました！']);
+    js.context.callMethod('logger', ['_someFlutterState']);
   }
 
 // Handles the key events from the RawKeyboardListener and update the
@@ -123,25 +118,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(52)) {
       //Digit 4
       print('KeyDown : ${event.logicalKey.debugName}');
-      //toast();
-      String myurl = Uri.base.toString(); //get complete url
-      // Write to the console.
-      //window.console.log('Jinkies!');
-      //window.console.error('Jeepers!');
-      //print(window.closed); // 'false'
-      //window.close();
-      //print(window.closed); // 'true'
-
-      //window.open('about:blank', '_self').close();
-      //var newLocation = window.location..href = myurl;
-      //window.open('', '_self').close();
-      //closeInAppWebView();
-      //window.location = newLocation;
-      // Does not close this window, as the history has changed.
-      //window.close();
-      //window.open('','_self').close();
-      //print(window.location);
-      //print(window.closed); // 'false'
+      CloseTop();
     }
     //if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(4294969346)) {
     //F1key
@@ -216,15 +193,18 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 primary: _phase ? Colors.orangeAccent : Colors.grey,
               ),
             ),
-            ElevatedButton(
+            TextButton(
               //heroTag: "Phase/Pluse",
-              onPressed: () => toast(),
+              onPressed: () {
+                //_incrementCounter();
+                CloseTop();
+              },
               child: const Text('4  Quit(Close)',
                   style: TextStyle(
                     color: Colors.black,
                   )),
               style: ElevatedButton.styleFrom(
-                primary: Colors.grey,
+                primary: Colors.blueAccent,
               ),
             ),
           ],
