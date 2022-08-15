@@ -88,10 +88,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   void _handleKeyEvent(KeyEvent event) {
     //F2 = 4294969346;
     // キーダウン
-    //if (event.logicalKey == LogicalKeyboardKey.keyQ) {}
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(49)) {
       //Digit 1
-      print('KeyDown : ${event.logicalKey.debugName}');
       //11_traceControl();
       if (_trace) {
         _controller.nontrace();
@@ -104,25 +102,22 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     }
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(50)) {
       //Digit 2
-      print('KeyDown : ${event.logicalKey.debugName}');
       _controller.clear();
     }
     if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(51)) {
       //Digit 3
-      print('KeyDown : ${event.logicalKey.debugName}');
       setState(() {
         _phase = !_phase;
       });
     }
 
-    if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(52)) {
-      //Digit 4
-      print('KeyDown : ${event.logicalKey.debugName}');
+    if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(57)) {
+      //Digit 9
       CloseTop();
     }
     //if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(4294969346)) {
     //F1key
-    //  print('KeyDown : ${event.logicalKey.debugName}');
+    print('KeyDown : ${event.logicalKey.debugName}');
     //  _controller.clear();
     //}
 
@@ -160,30 +155,29 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            OutlinedButton(
-              //heroTag: "Trace",
+            TextButton.icon(
               onPressed: () => _controller.nontrace(),
-              child: const Text('1  Trace',
+              label: Text('1  Trace',
                   style: TextStyle(
                     color: Colors.black,
                   )),
+              icon: Icon(Icons.trending_up),
               style: ElevatedButton.styleFrom(
                 primary: _trace ? Colors.orangeAccent : Colors.grey,
               ),
             ),
-            TextButton(
-              //heroTag: "clear",
+            TextButton.icon(
               onPressed: () => _controller.clear(),
-              child: const Text('2  Clear',
+              label: const Text('2  Clear',
                   style: TextStyle(
                     color: Colors.black,
                   )),
+              icon: Icon(Icons.cleaning_services),
               style: ElevatedButton.styleFrom(
                 primary: _clear ? Colors.orangeAccent : Colors.grey,
               ),
             ),
             TextButton(
-              //heroTag: "Phase/Pluse",
               onPressed: () => _controller.clear(),
               child: Text('3 ${_phase ? 'Phase' : 'Pluse'}',
                   style: TextStyle(
@@ -194,12 +188,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
             ),
             TextButton(
-              //heroTag: "Phase/Pluse",
-              onPressed: () {
-                //_incrementCounter();
-                CloseTop();
-              },
-              child: const Text('4  Quit(Close)',
+              onPressed: () => CloseTop(),
+              child: const Text('9  Quit(Close)',
                   style: TextStyle(
                     color: Colors.black,
                   )),
