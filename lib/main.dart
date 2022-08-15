@@ -187,12 +187,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 primary: _phase ? Colors.orangeAccent : Colors.grey,
               ),
             ),
-            TextButton(
+            TextButton.icon(
               onPressed: () => CloseTop(),
-              child: const Text('9  Quit(Close)',
+              label: const Text('9  Quit(Close)',
                   style: TextStyle(
                     color: Colors.black,
                   )),
+              icon: Icon(
+                Icons.logout_outlined,
+                color: Colors.orangeAccent,
+              ),
               style: ElevatedButton.styleFrom(
                 primary: Colors.blueAccent,
               ),
