@@ -61,7 +61,6 @@ class SignHistory {
   }
 
   void addPaint(Offset startPoint) {
-    print("addPaint:  $_inDrag");
     if (!_inDrag) {
       //faluse
       _inDrag = true;
@@ -73,7 +72,6 @@ class SignHistory {
   }
 
   void updatePaint(Offset nextPoint) {
-    print("updatePaint:  $_inDrag");
     if (_inDrag & _trace) {
       //true
       _PaintData data = _paintList.last.key;

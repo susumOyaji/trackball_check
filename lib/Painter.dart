@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter/rendering.dart';
 import 'PaintHistory.dart';
-//import 'package:flutter/services.dart';
 
 class Signer extends StatefulWidget {
   final SignController paintController;
@@ -22,9 +20,6 @@ class _SignerState extends State<Signer> {
   double relativeDy = 0;
 
   void _updateLocation(PointerEvent details) {
-    //Text(
-    //    style: TextStyle(color: Colors.white),
-    //    'The cursor is here: (${x.toStringAsFixed(2)}, ${y.toStringAsFixed(2)})');
     setState(() {
       x = details.position.dx;
       y = details.position.dy;
@@ -48,11 +43,6 @@ class _SignerState extends State<Signer> {
   @override
   Widget build(BuildContext context) {
     return SizedBox.expand(
-      //child: Builder(
-      //builder: (BuildContext context) {
-
-      //final FocusNode focusNode = Focus.of(context);
-      //final bool hasFocus = focusNode.hasFocus;
       child: MouseRegion(
         cursor: SystemMouseCursors.click, //hand click cursor
         child: CustomPaint(
@@ -140,21 +130,20 @@ class SignController extends ChangeNotifier {
   }
 
   void nontrace() {
-    //_paintHistory.upmovePaint();
     _paintHistory.endTrace();
     notifyListeners();
   }
 
   void ontrace() {
     _paintHistory.startPaint();
-    //_paintHistory.clear();
+
     notifyListeners();
   }
 
   void clear() {
     _paintHistory.endPaint();
     _paintHistory.clear();
-    //2_paintHistory.addPaint(Offset(280, 639));
+
     notifyListeners();
   }
 }

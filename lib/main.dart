@@ -1,20 +1,7 @@
-//import 'dart:html' as html;
-//import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-//import 'PaintHistory.dart';
 import 'Painter.dart';
-//import 'InheritedWidget.dart';
-//import 'package:fluttertoast/fluttertoast.dart';
-//import 'Nav2App.dart';
-//import 'package:url_launcher/url_launcher.dart';
-//import 'CopyableTextField.dart';
-//import 'ShortCur.dart';
-//import 'Invork.dart';
-//import 'JScript.dart';
 import 'dart:js' as js;
-//import 'urlmain.dart';
 
 void main() => runApp(const MyApp());
 
@@ -51,8 +38,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   bool _trace = false;
   bool _clear = true;
   bool _phase = true;
-// The message to display.
-//  String? _message;
 
   @override
   void initState() {
@@ -75,7 +60,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   void _incrementCounter() {
     var state = js.JsObject.fromBrowserObject(js.context['state']);
-    print(state['hello']);
   }
 
   void CloseTop() {
@@ -115,19 +99,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       //Digit 9
       CloseTop();
     }
-    //if (event.logicalKey == LogicalKeyboardKey.findKeyByKeyId(4294969346)) {
-    //F1key
-    print('KeyDown : ${event.logicalKey.debugName}');
-    //  _controller.clear();
-    //}
+
+    //print('KeyDown : ${event.logicalKey.debugName}');
 
     // キーアップ
-    if (event is KeyUpEvent) {
-      print('KeyUp : ${event.logicalKey.debugName}');
-    }
-    //setState(() {
-    //  print(event.logicalKey.debugName);
-    //});
+    //if (event is KeyUpEvent) {
+    //  print('KeyUp : ${event.logicalKey.debugName}');
+    //}
   }
 
   @override
@@ -138,12 +116,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       onKeyEvent: (node, event) {
         if (event is KeyDownEvent) {
           _handleKeyEvent(event);
-          //if (event.logicalKey == LogicalKeyboardKey.keyQ) {
-          //  _controller.clear();
-          //  print('KeyDown : ${event.logicalKey.debugName}');
-          //処理
-          //  return KeyEventResult.handled;
-          //}
         }
         return KeyEventResult.ignored;
       },
