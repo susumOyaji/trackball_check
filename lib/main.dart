@@ -1,5 +1,5 @@
-import 'dart:html' as html;
-import 'dart:ui';
+//import 'dart:html' as html;
+//import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -177,12 +177,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 primary: _clear ? Colors.orangeAccent : Colors.grey,
               ),
             ),
-            TextButton(
+            TextButton.icon(
               onPressed: () => _controller.clear(),
-              child: Text('3 ${_phase ? 'Phase' : 'Pluse'}',
+              label: Text('3 ${_phase ? 'Phase' : 'Pluse'}',
                   style: TextStyle(
                     color: Colors.black,
                   )),
+              icon: Icon(Icons.toggle_on),
               style: ElevatedButton.styleFrom(
                 primary: _phase ? Colors.orangeAccent : Colors.grey,
               ),
